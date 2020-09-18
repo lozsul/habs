@@ -17,12 +17,17 @@
 		F0493DCB24F813CA00F12941 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0493DCA24F813CA00F12941 /* Preview Assets.xcassets */; };
 		F0493DCE24F813CA00F12941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0493DCC24F813CA00F12941 /* LaunchScreen.storyboard */; };
 		F0493DD624F81A1F00F12941 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0493DD524F81A1F00F12941 /* AddView.swift */; };
+		F065AF642500375D008922FA /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02ACF3A25002B9C00A1DE3D /* Day+CoreDataClass.swift */; };
+		F065AF6525003763008922FA /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02ACF3B25002B9C00A1DE3D /* Day+CoreDataProperties.swift */; };
+		F065AF6B25081ED7008922FA /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065AF6A25081ED7008922FA /* ColorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F02ACF3624FEB37D00A1DE3D /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		F02ACF3724FEB37D00A1DE3D /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		F0493DBB24F813C500F12941 /* Habs5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habs5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F02ACF3A25002B9C00A1DE3D /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F02ACF3B25002B9C00A1DE3D /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		F0493DBB24F813C500F12941 /* Habs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0493DBE24F813C500F12941 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0493DC024F813C500F12941 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F0493DC324F813C500F12941 /* Habs5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habs5.xcdatamodel; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		F0493DCD24F813CA00F12941 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0493DCF24F813CA00F12941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0493DD524F81A1F00F12941 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		F065AF6A25081ED7008922FA /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,7 @@
 		F0493DBC24F813C500F12941 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0493DBB24F813C500F12941 /* Habs5.app */,
+				F0493DBB24F813C500F12941 /* Habs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +70,9 @@
 		F0493DBD24F813C500F12941 /* Habs5 */ = {
 			isa = PBXGroup;
 			children = (
+				F065AF6A25081ED7008922FA /* ColorManager.swift */,
+				F02ACF3A25002B9C00A1DE3D /* Day+CoreDataClass.swift */,
+				F02ACF3B25002B9C00A1DE3D /* Day+CoreDataProperties.swift */,
 				F02ACF3624FEB37D00A1DE3D /* Habit+CoreDataClass.swift */,
 				F02ACF3724FEB37D00A1DE3D /* Habit+CoreDataProperties.swift */,
 				F0493DD524F81A1F00F12941 /* AddView.swift */,
@@ -104,7 +113,7 @@
 			);
 			name = Habs5;
 			productName = Habs5;
-			productReference = F0493DBB24F813C500F12941 /* Habs5.app */;
+			productReference = F0493DBB24F813C500F12941 /* Habs.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +123,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "Lauren Sullivan";
 				TargetAttributes = {
 					F0493DBA24F813C500F12941 = {
@@ -158,6 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F065AF6525003763008922FA /* Day+CoreDataProperties.swift in Sources */,
+				F065AF6B25081ED7008922FA /* ColorManager.swift in Sources */,
+				F065AF642500375D008922FA /* Day+CoreDataClass.swift in Sources */,
 				F02ACF3824FEB37D00A1DE3D /* Habit+CoreDataClass.swift in Sources */,
 				F0493DC424F813C500F12941 /* Habs5.xcdatamodeld in Sources */,
 				F0493DBF24F813C500F12941 /* AppDelegate.swift in Sources */,
@@ -310,9 +322,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.loz.Habs5;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Habs;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -330,9 +342,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.loz.Habs5;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Habs;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
