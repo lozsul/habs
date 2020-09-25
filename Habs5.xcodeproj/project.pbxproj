@@ -20,6 +20,9 @@
 		F065AF642500375D008922FA /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02ACF3A25002B9C00A1DE3D /* Day+CoreDataClass.swift */; };
 		F065AF6525003763008922FA /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02ACF3B25002B9C00A1DE3D /* Day+CoreDataProperties.swift */; };
 		F065AF6B25081ED7008922FA /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065AF6A25081ED7008922FA /* ColorManager.swift */; };
+		F0758D19251D31FE00132519 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0758D18251D31FE00132519 /* HabitView.swift */; };
+		F0758D1B251D338200132519 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0758D1A251D338200132519 /* DayView.swift */; };
+		F0758D1D251D33AE00132519 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0758D1C251D33AE00132519 /* WeekView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		F0493DCF24F813CA00F12941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0493DD524F81A1F00F12941 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		F065AF6A25081ED7008922FA /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		F0758D18251D31FE00132519 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		F0758D1A251D338200132519 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		F0758D1C251D33AE00132519 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,9 @@
 				F0493DBE24F813C500F12941 /* AppDelegate.swift */,
 				F0493DC024F813C500F12941 /* SceneDelegate.swift */,
 				F0493DC524F813C500F12941 /* ContentView.swift */,
+				F0758D18251D31FE00132519 /* HabitView.swift */,
+				F0758D1C251D33AE00132519 /* WeekView.swift */,
+				F0758D1A251D338200132519 /* DayView.swift */,
 				F0493DC724F813CA00F12941 /* Assets.xcassets */,
 				F0493DCC24F813CA00F12941 /* LaunchScreen.storyboard */,
 				F0493DCF24F813CA00F12941 /* Info.plist */,
@@ -170,11 +179,14 @@
 				F065AF6525003763008922FA /* Day+CoreDataProperties.swift in Sources */,
 				F065AF6B25081ED7008922FA /* ColorManager.swift in Sources */,
 				F065AF642500375D008922FA /* Day+CoreDataClass.swift in Sources */,
+				F0758D1D251D33AE00132519 /* WeekView.swift in Sources */,
 				F02ACF3824FEB37D00A1DE3D /* Habit+CoreDataClass.swift in Sources */,
 				F0493DC424F813C500F12941 /* Habs5.xcdatamodeld in Sources */,
 				F0493DBF24F813C500F12941 /* AppDelegate.swift in Sources */,
+				F0758D19251D31FE00132519 /* HabitView.swift in Sources */,
 				F0493DD624F81A1F00F12941 /* AddView.swift in Sources */,
 				F0493DC624F813C500F12941 /* ContentView.swift in Sources */,
+				F0758D1B251D338200132519 /* DayView.swift in Sources */,
 				F0493DC124F813C500F12941 /* SceneDelegate.swift in Sources */,
 				F02ACF3924FEB37D00A1DE3D /* Habit+CoreDataProperties.swift in Sources */,
 			);

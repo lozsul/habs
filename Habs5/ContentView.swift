@@ -14,12 +14,14 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
     // Adding a FetchRequest to load all the Core Data results that match any criteria I specify (currently by id so that it shows each habit in the order as I added them. Then we can create & manage Core Data fetch requests automatically. No mention of fetching the entity Day here because it knows the relationship exists.
-    @FetchRequest(entity: Habit.entity(), sortDescriptors: [
-        NSSortDescriptor(keyPath: \Habit.todayValue, ascending: true)
+    @FetchRequest(entity: Habit.entity(),sortDescriptors: [
+        NSSortDescriptor(keyPath: \Habit.todayValue, ascending: true),
+        NSSortDescriptor(keyPath: \Habit.title, ascending: true)
     ]) var habits: FetchedResults<Habit>
     
     // Adding this boolean variable for when to show AddView, have to use @State so we can change the variable, but using @State means we can only use this variable in this view. Always add private to @State as this is what Apple recommends and simply re-inforces the local nature of @State. Every time @State is changed/updated, the view is re-rendered.
     @State private var showingAddHabit = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         // Adding NavigationView to be able to click through to the Add View, also gives us the header bar at the top to have a heading and Add/Edit buttons
@@ -31,17 +33,7 @@ struct ContentView: View {
                     
                     // Using "id: \.self" instead of "id: \.id" because when I use the latter it shows the title of the last habit multiple times (over as many habits I have)
                     ForEach(habits, id: \.self) { habit in
-                        VStack(alignment: .leading) {
-                            Text(habit.title)
-                                .padding(.bottom, 4)
-                            HStack {
-                                // Showing the LAST 7 days in the array of days of each habit
-                                ForEach(habit.dayArray.count-7..<habit.dayArray.count, id: \.self) { index in
-                                    DayView(day: habit.dayArray[index], habit: habit)
-                                }
-                                .frame(maxWidth: .infinity)
-                            }
-                        }
+                        HabitView(habit: habit)
                     }
                         
                     // Refers to delete function below that will fully delete the habit from Core Data when the user swipes to delete
@@ -66,7 +58,7 @@ struct ContentView: View {
                     // Using a plus system icon instead of text
                     Image(systemName: "plus")
                     // Adding a frame to it so that the area around the plus is clickable
-                    .frame(width: 23, height: 23)
+                    .frame(width: 40, height: 40)
                     }
             )
                 
@@ -74,43 +66,6 @@ struct ContentView: View {
                 .sheet(isPresented: self.$showingAddHabit) {
                 AddView().environment(\.managedObjectContext, self.moc)
             }
-        }
-    }
-    
-    // Created new view to make the day value change dynamic
-    struct DayView: View {
-        @Environment(\.managedObjectContext) var moc
-        @ObservedObject var day: Day   // !! @ObserveObject is the key!!!
-        var habit: Habit   // !! @ObserveObject is the key!!!
-        let colors = [ColorManager.lightGray, ColorManager.armyGreen, ColorManager.crimsonRed, ColorManager.darkGray]
-
-        var body: some View {
-            // Using alignment: .leading otherwise the habit title moves into the middle of the screen
-            Text("\(day.wrappedShort)").onTapGesture {
-                self.changeValue(day: self.day, habit: self.habit)
-            }
-            .font(.footnote)
-            .frame(width: 42, height: 42)
-            .background(self.colors[Int(self.day.value)])
-            .buttonStyle(BorderlessButtonStyle())
-            .foregroundColor(.white)
-            .clipShape(Circle())
-        }
-        
-        // Function to change the value on a day when tapped
-        func changeValue(day: Day, habit: Habit) {
-            if day.value < 3 {
-                day.value = (day.value + 1)
-            } else {
-                day.value = 0
-            }
-            
-            let today = Date()
-            if Calendar.current.compare(today, to: day.date, toGranularity: .day) == .orderedSame {
-                habit.todayValue = day.value
-            }
-
-            try? self.moc.save()
         }
     }
     
@@ -136,6 +91,13 @@ struct ContentView: View {
             for indexHabits in 0...habits.count-1 {
                 print(habits[indexHabits].title)
                 print(habits[indexHabits].todayValue)
+                print(habits[indexHabits].id as Any)
+                
+                // Adding a habit.id in case one is not set already (fixing initial bug)
+                if habits[indexHabits].id == nil {
+                    habits[indexHabits].id = UUID()
+                    try? self.moc.save()
+                }
                 
                 // Calculate number of days in between
                 let totalHabitDays = habits[indexHabits].dayArray.count
@@ -160,12 +122,8 @@ struct ContentView: View {
                     newDay.short = String(formatter.string(from: newDate).prefix(2))
                     newDay.habit = habits[indexHabits]
                     
-                    // Check if today has a value other than zero
-//                    let result = habits.sorted {
-//                        $0.todayMidday.value > $1.todayMidday.value
-//                    }
-//
-//                    print(result)
+                    // Reset todayValue to 0
+                    habits[indexHabits].todayValue = 0
                 }
             }
         }

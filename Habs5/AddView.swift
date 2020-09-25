@@ -42,6 +42,7 @@ struct AddView: View {
                         let newHabit = Habit(context: self.moc)
                         newHabit.title = self.title
                         newHabit.todayValue = 0
+                        newHabit.id = UUID()
                         
                         // Passing this newly created habit to the addDays function to run so that the last 7 days are added for new habits
                         self.addDays(newHabit: newHabit)
