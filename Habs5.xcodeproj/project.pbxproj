@@ -333,6 +333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = me.loz.Habs5;
 				PRODUCT_NAME = Habs;
 				SWIFT_VERSION = 5.0;
@@ -353,6 +354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = me.loz.Habs5;
 				PRODUCT_NAME = Habs;
 				SWIFT_VERSION = 5.0;
