@@ -76,22 +76,22 @@
 		F0493DBD24F813C500F12941 /* Habs5 */ = {
 			isa = PBXGroup;
 			children = (
-				F065AF6A25081ED7008922FA /* ColorManager.swift */,
-				F02ACF3A25002B9C00A1DE3D /* Day+CoreDataClass.swift */,
-				F02ACF3B25002B9C00A1DE3D /* Day+CoreDataProperties.swift */,
-				F02ACF3624FEB37D00A1DE3D /* Habit+CoreDataClass.swift */,
-				F02ACF3724FEB37D00A1DE3D /* Habit+CoreDataProperties.swift */,
 				F0493DD524F81A1F00F12941 /* AddView.swift */,
-				F0493DBE24F813C500F12941 /* AppDelegate.swift */,
-				F0493DC024F813C500F12941 /* SceneDelegate.swift */,
 				F0493DC524F813C500F12941 /* ContentView.swift */,
 				F0758D18251D31FE00132519 /* HabitView.swift */,
 				F0758D1C251D33AE00132519 /* WeekView.swift */,
 				F0758D1A251D338200132519 /* DayView.swift */,
+				F0493DC224F813C500F12941 /* Habs5.xcdatamodeld */,
+				F02ACF3A25002B9C00A1DE3D /* Day+CoreDataClass.swift */,
+				F02ACF3B25002B9C00A1DE3D /* Day+CoreDataProperties.swift */,
+				F02ACF3624FEB37D00A1DE3D /* Habit+CoreDataClass.swift */,
+				F02ACF3724FEB37D00A1DE3D /* Habit+CoreDataProperties.swift */,
+				F0493DBE24F813C500F12941 /* AppDelegate.swift */,
+				F0493DC024F813C500F12941 /* SceneDelegate.swift */,
+				F065AF6A25081ED7008922FA /* ColorManager.swift */,
 				F0493DC724F813CA00F12941 /* Assets.xcassets */,
 				F0493DCC24F813CA00F12941 /* LaunchScreen.storyboard */,
 				F0493DCF24F813CA00F12941 /* Info.plist */,
-				F0493DC224F813C500F12941 /* Habs5.xcdatamodeld */,
 				F0493DC924F813CA00F12941 /* Preview Content */,
 			);
 			path = Habs5;
@@ -325,6 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Habs5/Preview Content\"";
 				DEVELOPMENT_TEAM = GGZ2R9UHLN;
 				ENABLE_PREVIEWS = YES;
@@ -333,7 +334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.loz.Habs5;
 				PRODUCT_NAME = Habs;
 				SWIFT_VERSION = 5.0;
@@ -346,6 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Habs5/Preview Content\"";
 				DEVELOPMENT_TEAM = GGZ2R9UHLN;
 				ENABLE_PREVIEWS = YES;
@@ -354,7 +356,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.loz.Habs5;
 				PRODUCT_NAME = Habs;
 				SWIFT_VERSION = 5.0;

@@ -9,12 +9,19 @@
     </entity>
     <entity name="Habit" representedClassName="Habit" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isFr" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isMo" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isSa" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isSu" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isTh" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isTu" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isWe" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="todayValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="habit" inverseEntity="Day"/>
     </entity>
     <elements>
         <element name="Day" positionX="-54" positionY="9" width="128" height="118"/>
-        <element name="Habit" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Habit" positionX="-54" positionY="-9" width="128" height="208"/>
     </elements>
 </model>

@@ -19,16 +19,19 @@ struct ContentView: View {
         NSSortDescriptor(keyPath: \Habit.title, ascending: true)
     ]) var habits: FetchedResults<Habit>
     
-    // Adding this boolean variable for when to show AddView, have to use @State so we can change the variable, but using @State means we can only use this variable in this view. Always add private to @State as this is what Apple recommends and simply re-inforces the local nature of @State. Every time @State is changed/updated, the view is re-rendered.
-    @State private var showingAddHabit = false
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         // Adding NavigationView to be able to click through to the Add View, also gives us the header bar at the top to have a heading and Add/Edit buttons
         NavigationView {
             
             // VStack to make "some View" work, to hold all views within it
             VStack {
+//                ZStack(alignment: .trailing) {
+//                    Text("TODAY")
+//                        .font(.footnote)
+//                }
+//                .frame(height: 10)
+//                .background(Color.red)
+                
                 List {
                     
                     // Using "id: \.self" instead of "id: \.id" because when I use the latter it shows the title of the last habit multiple times (over as many habits I have)
@@ -48,24 +51,15 @@ struct ContentView: View {
             .navigationBarTitle(Text("Habs"), displayMode: .inline)
                 
             // NavigationBarItems for Add/plus button on the right to add a new habit
-                .navigationBarItems(trailing:
-                Button(action: {
-                    
-                    // Changes showingAddHabit boolean to true if false so that Add View pops up
-                    self.showingAddHabit.toggle()
-                }) {
+            .navigationBarItems(trailing:
+                NavigationLink(destination: AddView().environment(\.managedObjectContext, self.moc)) {
                     
                     // Using a plus system icon instead of text
                     Image(systemName: "plus")
                     // Adding a frame to it so that the area around the plus is clickable
                     .frame(width: 40, height: 40)
-                    }
+                }
             )
-                
-                // Signalling that a new sheet called AddView is to pop up when showingAddHabit boolean is true, and passing through the environment/moc so that saving a new habit works
-                .sheet(isPresented: self.$showingAddHabit) {
-                AddView().environment(\.managedObjectContext, self.moc)
-            }
         }
     }
     
@@ -118,12 +112,31 @@ struct ContentView: View {
                     let newDate = todayMidday.addingTimeInterval(-(Double(indexDays-1)*86400))
 
                     newDay.date = newDate
-                    newDay.value = 0
                     newDay.short = String(formatter.string(from: newDate).prefix(2))
                     newDay.habit = habits[indexHabits]
                     
+                    // Set current day based on template
+                    switch newDay.short {
+                    case "Su":
+                        newDay.value = habits[indexHabits].isSu == 1 ? 0 : 3
+                    case "Mo":
+                        newDay.value = habits[indexHabits].isMo == 1 ? 0 : 3
+                    case "Tu":
+                        newDay.value = habits[indexHabits].isTu == 1 ? 0 : 3
+                    case "We":
+                        newDay.value = habits[indexHabits].isWe == 1 ? 0 : 3
+                    case "Th":
+                        newDay.value = habits[indexHabits].isTh == 1 ? 0 : 3
+                    case "Fr":
+                        newDay.value = habits[indexHabits].isFr == 1 ? 0 : 3
+                    case "Sa":
+                        newDay.value = habits[indexHabits].isSa == 1 ? 0 : 3
+                    default:
+                        newDay.value = 0
+                    }
+                    
                     // Reset todayValue to 0
-                    habits[indexHabits].todayValue = 0
+                    habits[indexHabits].todayValue = newDay.value
                 }
             }
         }

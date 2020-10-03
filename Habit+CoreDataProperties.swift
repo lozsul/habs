@@ -21,6 +21,14 @@ extension Habit: Identifiable {
     @NSManaged public var title: String
     @NSManaged public var todayValue: Int16
     
+    @NSManaged public var isSu: Int16
+    @NSManaged public var isMo: Int16
+    @NSManaged public var isTu: Int16
+    @NSManaged public var isWe: Int16
+    @NSManaged public var isTh: Int16
+    @NSManaged public var isFr: Int16
+    @NSManaged public var isSa: Int16
+    
     // Copied from hackingwithswift as I created the NSManagedObject subclass after wiring the relationship to day
     @NSManaged public var day: NSSet?
     
