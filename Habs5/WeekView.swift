@@ -13,7 +13,10 @@ struct WeekView: View {
     @ObservedObject var habit: Habit
 
     var body: some View {
-        HStack {
+        
+        // Set spacing on Hstack to reduce default to fit all circles on screens across all devices
+        HStack(spacing: 2) {
+            
             // Showing the LAST 7 days in the array of days of each habit
             ForEach((habit.dayArray.count >= 7 ? habit.dayArray.count-7 : 0)..<habit.dayArray.count, id: \.self) { index in
                 DayView(day: self.habit.dayArray[index], habit: self.habit)

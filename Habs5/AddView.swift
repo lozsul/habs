@@ -119,7 +119,6 @@ struct AddView: View {
         default:
             day0.value = 0
         }
-        day0.value = 0
         
         // Set today's value based on template
         newHabit.todayValue = day0.value

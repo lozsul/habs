@@ -20,7 +20,7 @@ struct DayView: View {
             self.changeValue(day: self.day, habit: self.habit)
         }
         .font(.footnote)
-        .frame(width: 42, height: 42)
+        .frame(width: 40, height: 40) // Use 40x40 to fit onto tested screens: iphone 8, 11, 11 Pro, 11 Max
         .background(Circle().fill(self.colors[Int(self.day.value)]))
         .buttonStyle(BorderlessButtonStyle())
         .foregroundColor(.white)
