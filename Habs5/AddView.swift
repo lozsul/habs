@@ -40,19 +40,19 @@ struct AddView: View {
                 }
                 
                 Section(header: Text("Which days?")) {
-                    HStack {
+                    HStack(spacing: 2) {
                         ForEach(0..<templateDays.count, id: \.self) { index in
                             Text(self.templateDays[index]).onTapGesture {
                                 self.templateValues[index] = self.templateValues[index] == 1 ? 0 : 1
                             }
                             .font(.footnote)
-                            .frame(width: 42, height: 42)
+                            .frame(width: 40, height: 40)
                             .background(Circle().fill(self.colors[self.templateValues[index]]))
                             .buttonStyle(BorderlessButtonStyle())
                             .foregroundColor(.white)
                         }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
                 }
                 
                 Section {

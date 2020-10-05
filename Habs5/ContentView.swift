@@ -23,17 +23,23 @@ struct ContentView: View {
         // Adding NavigationView to be able to click through to the Add View, also gives us the header bar at the top to have a heading and Add/Edit buttons
         NavigationView {
             
-            List {
+            // VStack to make "some View" work, to hold all views within it
+            VStack {
                 
-                // Using "id: \.self" instead of "id: \.id" because when I use the latter it shows the title of the last habit multiple times (over as many habits I have)
-                ForEach(habits, id: \.self) { habit in
-                    HabitView(habit: habit)
-                }
+                List {
                     
-                // Refers to delete function below that will fully delete the habit from Core Data when the user swipes to delete
-                .onDelete(perform: deleteHabits)
+                    // Using "id: \.self" instead of "id: \.id" because when I use the latter it shows the title of the last habit multiple times (over as many habits I have)
+                    ForEach(habits, id: \.self) { habit in
+                        HabitView(habit: habit)
+                    }
+                    
+                        
+                    // Refers to delete function below that will fully delete the habit from Core Data when the user swipes to delete
+                    .onDelete(perform: deleteHabits)
+                }
+                .listStyle(PlainListStyle())
             }
-      
+            
             // When app is opened on phone, we want to run a function to add days if needed
             .onAppear(perform: self.loadDays)
                 
@@ -51,6 +57,7 @@ struct ContentView: View {
                 }
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // Function to delete habit from Core Data. IndexSet is a method that can delete from a list of items.
