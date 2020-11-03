@@ -17,6 +17,7 @@ struct HabitView: View {
         VStack(alignment: .leading) {
             Text(habit.title)
                 .padding(.bottom, 1)
+                .padding(.leading, 4)
             WeekView(habit: self.habit)
         }
     }

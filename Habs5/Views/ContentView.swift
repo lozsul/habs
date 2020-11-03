@@ -19,6 +19,8 @@ struct ContentView: View {
         NSSortDescriptor(keyPath: \Habit.title, ascending: true)
     ]) var habits: FetchedResults<Habit>
     
+    let colors = [ColorManager.lightGray, ColorManager.armyGreen, ColorManager.crimsonRed, ColorManager.darkGray]
+    
     var body: some View {
         // Adding NavigationView to be able to click through to the Add View, also gives us the header bar at the top to have a heading and Add/Edit buttons
         NavigationView {
@@ -41,19 +43,30 @@ struct ContentView: View {
             }
             
             // When app is opened on phone, we want to run a function to add days if needed
-            .onAppear(perform: self.loadDays)
+            .onAppear(perform: loadDays)
+            
+            // When app is opened from the background, we want the loadDays function to run too
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                loadDays()
+            }
                 
             // NavigationBarTitle with inline displayMode so that it shows nicely in header instead of a massive heading under the header
-            .navigationBarTitle(Text("Habs"), displayMode: .inline)
+            .navigationBarTitle(Text("\(success())%"), displayMode: .inline)
                 
             // NavigationBarItems for Add/plus button on the right to add a new habit
-            .navigationBarItems(trailing:
+            .navigationBarItems(
+                leading: NavigationLink(destination: SettingsView().environment(\.managedObjectContext, self.moc)) {
+                    Image(systemName: "person")
+                        .frame(width: 30, height: 30)
+                }
+                ,
+                trailing:
                 NavigationLink(destination: AddView().environment(\.managedObjectContext, self.moc)) {
                     
                     // Using a plus system icon instead of text
                     Image(systemName: "plus")
                     // Adding a frame to it so that the area around the plus is clickable
-                    .frame(width: 40, height: 40)
+                    .frame(width: 30, height: 30)
                 }
             )
         }
@@ -72,6 +85,7 @@ struct ContentView: View {
     
     // Function to add any days since app was last opened
     func loadDays() {
+        
         let today = Date()
         
         // Loop through all habits
@@ -80,10 +94,7 @@ struct ContentView: View {
             
             // Creating an index of the habits to loop through
             for indexHabits in 0...habits.count-1 {
-                print(habits[indexHabits].title)
-                print(habits[indexHabits].todayValue)
-                print(habits[indexHabits].id as Any)
-                
+
                 // Adding a habit.id in case one is not set already (fixing initial bug)
                 if habits[indexHabits].id == nil {
                     habits[indexHabits].id = UUID()
@@ -98,7 +109,7 @@ struct ContentView: View {
                 let diff = Calendar.current.dateComponents([.day], from: lastDateMidday, to: todayMidday)
                 let days = diff.day!
                 
-                // For loop in REVERSE for that many days
+                // For loop in REVERSE for that many days (why reverse?)
                 for indexDays in stride(from: days, to: 0, by: -1) {
 
                     // Adding a new day on each loop
@@ -137,6 +148,34 @@ struct ContentView: View {
                 }
             }
         }
+        
+        // Set app icon badge
+        if UserDefaults.standard.bool(forKey: "badgeOn") == true {
+            var count = 0
+            for habit in habits {
+                if habit.todayValue == 0  {
+                    count += 1
+                }
+            }
+            UIApplication.shared.applicationIconBadgeNumber = count
+        } else {
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+    }
+    
+    func success() -> Int {
+        var complete = 0
+        var incomplete = 0
+        for indexHabits in 0...habits.count-1 {
+            for indexDays in ((habits[indexHabits].dayArray.count >= 7 ? habits[indexHabits].dayArray.count-7 : 0)..<habits[indexHabits].dayArray.count) {
+                if habits[indexHabits].dayArray[indexDays].value == 1 {
+                    complete += 1
+                } else if habits[indexHabits].dayArray[indexDays].value != 3 {
+                    incomplete += 1
+                }
+            }
+        }
+        return Int(round(Double(complete)/Double(complete+incomplete)*100))
     }
 }
 

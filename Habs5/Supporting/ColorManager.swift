@@ -14,6 +14,7 @@ struct ColorManager {
     static let crimsonRed = Color("CrimsonRed")
     static let darkGray = Color("DarkGray")
     static let lightGray = Color(UIColor.lightGray)
+    static let backGray = Color("BackGray")
 
     //... add the rest of your colors here
 }

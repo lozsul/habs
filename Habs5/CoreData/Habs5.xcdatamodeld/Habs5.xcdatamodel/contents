@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Day" representedClassName="Day" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -16,12 +16,13 @@
         <attribute name="isTh" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="isTu" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="isWe" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="todayValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="habit" inverseEntity="Day"/>
     </entity>
     <elements>
         <element name="Day" positionX="-54" positionY="9" width="128" height="118"/>
-        <element name="Habit" positionX="-54" positionY="-9" width="128" height="208"/>
+        <element name="Habit" positionX="-54" positionY="-9" width="128" height="223"/>
     </elements>
 </model>

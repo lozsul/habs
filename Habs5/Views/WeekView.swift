@@ -11,6 +11,7 @@ import SwiftUI
 struct WeekView: View {
     @Environment(\.managedObjectContext) var moc
     @ObservedObject var habit: Habit
+    var complete: Int = 0
 
     var body: some View {
         

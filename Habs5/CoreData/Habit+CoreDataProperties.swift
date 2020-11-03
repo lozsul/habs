@@ -20,6 +20,7 @@ extension Habit: Identifiable {
     @NSManaged public var id: UUID?
     @NSManaged public var title: String
     @NSManaged public var todayValue: Int16
+    @NSManaged public var lastUpdated: Date?
     
     @NSManaged public var isSu: Int16
     @NSManaged public var isMo: Int16
